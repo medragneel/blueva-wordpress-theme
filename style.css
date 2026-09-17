@@ -1,0 +1,187 @@
+/**
+ * Theme Name:   BLUEVA
+ * Theme URI:    https://www.blueva.dz
+ * Description:  BLUEVA — Le confort, réinventé. Astra child theme for the BLUEVA EVA clog e-commerce store.
+ * Author:       BLUEVA
+ * Author URI:   https://www.blueva.dz
+ * Template:     astra
+ * Version:      1.0.0
+ * Text Domain:  blueva
+ * WC requires at least: 3.0
+ * WC tested up to: 11.1.0
+ */
+
+/* ==========================================================================
+   BLUEVA DESIGN SYSTEM
+   Single source of truth for color, spacing, radius and typography tokens.
+   Do not hardcode raw values in component CSS — reference these variables.
+   ========================================================================== */
+:root {
+	/* Brand color */
+	--blueva-primary: #157A8C;         /* BLUEVA teal — announcement bar, logo, links */
+	--blueva-primary-dark: #0E5F6E;    /* hover / pressed states */
+	--blueva-primary-light: #4FB6C4;   /* gradient end, tints */
+	--blueva-primary-tint: #E3F1F3;    /* pale teal backgrounds */
+
+	/* Neutrals */
+	--blueva-text: #16232A;
+	--blueva-text-muted: #5B6B70;
+	--blueva-background: #FBFBFB;
+	--blueva-surface: #FFFFFF;
+	--blueva-border: #E4E9EA;
+
+	/* Feedback */
+	--blueva-success: #2E8B57;
+	--blueva-error: #D64545;
+
+	/* Radius */
+	--blueva-radius-sm: 6px;
+	--blueva-radius-md: 12px;
+	--blueva-radius-lg: 20px;
+	--blueva-radius-pill: 999px;
+
+	/* Spacing scale */
+	--blueva-spacing-xs: 8px;
+	--blueva-spacing-sm: 16px;
+	--blueva-spacing-md: 24px;
+	--blueva-spacing-lg: 40px;
+	--blueva-spacing-xl: 64px;
+
+	/* Layout */
+	--blueva-container: 1280px;
+	--blueva-header-height: 88px;
+	--blueva-announcement-height: 44px;
+
+	/* Typography */
+	--blueva-font-display: 'Anton', Impact, sans-serif;
+	--blueva-font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+	/* Motion */
+	--blueva-transition-fast: 150ms ease;
+	--blueva-transition: 250ms ease;
+}
+
+/* Base typography hierarchy, defined once, reused everywhere */
+body {
+	font-family: var(--blueva-font-body);
+	color: var(--blueva-text);
+	background: var(--blueva-background);
+}
+
+.blueva-display,
+h1.blueva-heading {
+	font-family: var(--blueva-font-display);
+	text-transform: uppercase;
+	letter-spacing: 0.01em;
+	line-height: 1.05;
+	font-size: clamp(2.5rem, 5vw + 1rem, 5.5rem);
+}
+
+h2.blueva-heading {
+	font-family: var(--blueva-font-display);
+	text-transform: uppercase;
+	line-height: 1.1;
+	font-size: clamp(1.8rem, 2.5vw + 1rem, 3rem);
+}
+
+h3.blueva-heading {
+	font-family: var(--blueva-font-body);
+	font-weight: 700;
+	font-size: clamp(1.15rem, 1vw + 1rem, 1.5rem);
+}
+
+.blueva-body {
+	font-size: clamp(0.95rem, 0.3vw + 0.85rem, 1.05rem);
+	line-height: 1.6;
+	color: var(--blueva-text-muted);
+}
+
+.blueva-small {
+	font-size: 0.8rem;
+	color: var(--blueva-text-muted);
+}
+
+.blueva-nav-text {
+	font-family: var(--blueva-font-body);
+	font-weight: 600;
+	font-size: 0.95rem;
+}
+
+.blueva-product-title {
+	font-family: var(--blueva-font-body);
+	font-weight: 600;
+	font-size: 1rem;
+}
+
+.blueva-price {
+	font-family: var(--blueva-font-body);
+	font-weight: 700;
+	font-size: 1.05rem;
+	color: var(--blueva-primary);
+}
+
+.blueva-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	font-family: var(--blueva-font-body);
+	font-weight: 600;
+	font-size: 0.95rem;
+	padding: 14px 28px;
+	border-radius: var(--blueva-radius-pill);
+	border: 2px solid var(--blueva-primary);
+	background: var(--blueva-primary);
+	color: #fff;
+	cursor: pointer;
+	transition: background var(--blueva-transition-fast), color var(--blueva-transition-fast), border-color var(--blueva-transition-fast);
+	min-height: 44px;
+}
+
+.blueva-btn:hover,
+.blueva-btn:focus-visible {
+	background: var(--blueva-primary-dark);
+	border-color: var(--blueva-primary-dark);
+	color: #fff;
+}
+
+.blueva-btn-ghost {
+	background: transparent;
+	border-color: currentColor;
+	color: inherit;
+}
+
+.blueva-btn-ghost:hover,
+.blueva-btn-ghost:focus-visible {
+	background: rgba(255, 255, 255, 0.15);
+	color: inherit;
+	border-color: currentColor;
+}
+
+.blueva-container {
+	max-width: var(--blueva-container);
+	margin-inline: auto;
+	padding-inline: var(--blueva-spacing-sm);
+}
+
+@media (min-width: 768px) {
+	.blueva-container {
+		padding-inline: var(--blueva-spacing-md);
+	}
+}
+
+:focus-visible {
+	outline: 3px solid var(--blueva-primary-light);
+	outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+}
