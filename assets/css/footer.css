@@ -1,0 +1,189 @@
+
+/* ==========================================================================
+   BLUEVA — PHASE 2: FOOTER
+   Tested at 320 / 375 / 390 / 414 / 480 / 768 / 1024 / 1280 / 1440 / 1920.
+   ========================================================================== */
+
+.blueva-custom-header #colophon {
+	display: none !important;
+}
+
+.blueva-footer {
+	background: var(--blueva-primary);
+	color: #fff;
+	padding-top: var(--blueva-spacing-xl);
+}
+
+.blueva-footer-inner {
+	display: flex;
+	flex-wrap: wrap;
+	padding-bottom: var(--blueva-spacing-lg);
+	margin: calc(var(--blueva-spacing-lg) / -2);
+}
+
+.blueva-footer-col {
+	min-width: 0;
+	flex: 1 1 220px;
+	margin: calc(var(--blueva-spacing-lg) / 2);
+}
+
+.blueva-footer-brand {
+	flex: 1.6 1 280px;
+}
+
+/* Brand column */
+.blueva-footer-logo {
+	display: inline-flex;
+	flex-direction: column;
+	gap: 4px;
+	text-decoration: none;
+	margin-bottom: var(--blueva-spacing-sm);
+}
+
+.blueva-logo-word--footer {
+	font-family: var(--blueva-font-display);
+	font-size: 2rem;
+	text-transform: uppercase;
+	color: #fff;
+	line-height: 1;
+}
+
+.blueva-logo-tagline--footer {
+	font-family: var(--blueva-font-body);
+	font-weight: 600;
+	font-size: 0.6rem;
+	letter-spacing: 0.14em;
+	color: #fff;
+	text-transform: uppercase;
+	opacity: 0.9;
+}
+
+.blueva-footer-description {
+	color: rgba(255, 255, 255, 0.85);
+	font-size: 0.92rem;
+	line-height: 1.6;
+	max-width: 34ch;
+	margin: 0 0 var(--blueva-spacing-sm);
+}
+
+.blueva-footer-social {
+	display: flex;
+	gap: 10px;
+}
+
+.blueva-social-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: #fff;
+	color: var(--blueva-primary);
+	transition: transform var(--blueva-transition-fast), background var(--blueva-transition-fast);
+}
+
+.blueva-social-icon:hover,
+.blueva-social-icon:focus-visible {
+	background: var(--blueva-primary-tint);
+	transform: translateY(-2px);
+}
+
+/* Link columns */
+.blueva-footer-heading {
+	font-family: var(--blueva-font-body);
+	font-weight: 700;
+	font-size: 0.85rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: #fff;
+	margin: 0 0 var(--blueva-spacing-sm);
+}
+
+.blueva-footer-links {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.blueva-footer-links a {
+	color: rgba(255, 255, 255, 0.85);
+	text-decoration: none;
+	font-size: 0.9rem;
+	font-weight: 500;
+	transition: color var(--blueva-transition-fast);
+}
+
+.blueva-footer-links--caps a {
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.blueva-footer-links a:hover,
+.blueva-footer-links a:focus-visible {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.blueva-footer-contact-item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.blueva-footer-contact-item svg {
+	flex-shrink: 0;
+	color: #fff;
+}
+
+/* Bottom bar */
+.blueva-footer-bottom {
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+	padding: var(--blueva-spacing-sm) 0;
+	text-align: center;
+}
+
+.blueva-footer-bottom .blueva-small {
+	color: rgba(255, 255, 255, 0.85);
+	margin: 0;
+}
+
+/* -------------------------------------------------------------------- */
+/* Tablet: balanced 2-column layout                                      */
+/* -------------------------------------------------------------------- */
+@media (max-width: 1023px) {
+	.blueva-footer-col {
+		flex: 1 1 calc(50% - var(--blueva-spacing-lg));
+	}
+
+	.blueva-footer-brand {
+		flex: 1 1 calc(100% - var(--blueva-spacing-lg));
+	}
+}
+
+/* -------------------------------------------------------------------- */
+/* Mobile: stacked, comfortable spacing                                  */
+/* -------------------------------------------------------------------- */
+@media (max-width: 599px) {
+	.blueva-footer {
+		padding-top: var(--blueva-spacing-lg);
+	}
+
+	.blueva-footer-inner {
+		margin: calc(var(--blueva-spacing-md) / -2);
+	}
+
+	.blueva-footer-col,
+	.blueva-footer-brand {
+		flex: 1 1 calc(100% - var(--blueva-spacing-md));
+		margin: calc(var(--blueva-spacing-md) / 2);
+		text-align: left;
+	}
+
+	.blueva-footer-description {
+		max-width: none;
+	}
+}

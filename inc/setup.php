@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Theme setup: nav menu locations, supports, image sizes.

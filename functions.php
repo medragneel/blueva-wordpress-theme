@@ -1,3 +1,4 @@
+
 <?php
 /**
  * BLUEVA child theme functions.
@@ -23,10 +24,12 @@ define( 'BLUEVA_URI', get_stylesheet_directory_uri() );
  */
 require_once BLUEVA_DIR . '/inc/setup.php';
 require_once BLUEVA_DIR . '/inc/enqueue.php';
+require_once BLUEVA_DIR . '/inc/customizer.php';
 require_once BLUEVA_DIR . '/inc/header.php';
+require_once BLUEVA_DIR . '/inc/footer.php';
 
 /**
- * Phases not yet implemented (footer, front page, shop, cart, checkout,
- * contact, b2b) will each add their own inc/*.php include here, in order,
- * once built — so this file stays a stable manifest of what exists.
+ * Phases not yet implemented (front page, shop, cart, checkout, contact,
+ * b2b) will each add their own inc/*.php include here, in order, once
+ * built — so this file stays a stable manifest of what exists.
  */
