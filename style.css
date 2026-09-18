@@ -5,7 +5,7 @@
  * Author:       BLUEVA
  * Author URI:   https://www.blueva.dz
  * Template:     astra
- * Version:      1.0.0
+ * Version:      1.0.1
  * Text Domain:  blueva
  * WC requires at least: 3.0
  * WC tested up to: 11.1.0
@@ -59,6 +59,12 @@
 	/* Motion */
 	--blueva-transition-fast: 150ms ease;
 	--blueva-transition: 250ms ease;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
 }
 
 /* Base typography hierarchy, defined once, reused everywhere */
