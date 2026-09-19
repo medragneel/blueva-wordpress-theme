@@ -18,9 +18,9 @@ $blueva_categories = blueva_get_homepage_categories();
 		</h2>
 
 		<div class="blueva-categories-grid">
-			<?php foreach ( $blueva_categories as $blueva_cat ) : ?>
+			<?php foreach ( $blueva_categories as $blueva_index => $blueva_cat ) : ?>
 				<a
-					class="blueva-category-card"
+					class="blueva-category-card<?php echo $blueva_cat['image'] ? '' : ' blueva-category-card--placeholder-' . ( 0 === $blueva_index % 2 ? 'a' : 'b' ); ?>"
 					href="<?php echo esc_url( $blueva_cat['url'] ); ?>"
 					<?php if ( $blueva_cat['image'] ) : ?>
 						style="background-image: url('<?php echo esc_url( $blueva_cat['image'] ); ?>');"

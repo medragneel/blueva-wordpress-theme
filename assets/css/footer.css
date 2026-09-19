@@ -61,14 +61,10 @@
 	margin-bottom: var(--blueva-spacing-sm);
 }
 
-.blueva-footer-logo .footer-custom-logo,
+.blueva-footer-logo .custom-logo,
 .blueva-footer-logo-img {
 	max-height: 48px;
 	width: auto;
-}
-
-.blueva-footer-logo .footer-custom-logo {
-	filter: brightness(0) invert(1);
 }
 
 .blueva-logo-word--footer {

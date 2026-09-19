@@ -122,10 +122,10 @@
 			var pauseIcon = playPause.querySelector( '[data-blueva-icon-pause]' );
 			var isPaused  = video.paused;
 			if ( playIcon ) {
-				playIcon.hidden = ! isPaused;
+				playIcon.classList.toggle( 'blueva-icon-hidden', ! isPaused );
 			}
 			if ( pauseIcon ) {
-				pauseIcon.hidden = isPaused;
+				pauseIcon.classList.toggle( 'blueva-icon-hidden', isPaused );
 			}
 			playPause.setAttribute( 'aria-label', isPaused ? 'Lecture' : 'Pause' );
 		}
@@ -137,10 +137,10 @@
 			var mutedIcon   = muteBtn.querySelector( '[data-blueva-icon-muted]' );
 			var unmutedIcon = muteBtn.querySelector( '[data-blueva-icon-unmuted]' );
 			if ( mutedIcon ) {
-				mutedIcon.hidden = ! video.muted;
+				mutedIcon.classList.toggle( 'blueva-icon-hidden', ! video.muted );
 			}
 			if ( unmutedIcon ) {
-				unmutedIcon.hidden = video.muted;
+				unmutedIcon.classList.toggle( 'blueva-icon-hidden', video.muted );
 			}
 			muteBtn.setAttribute( 'aria-label', video.muted ? 'Activer le son' : 'Couper le son' );
 		}

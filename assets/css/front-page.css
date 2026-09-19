@@ -44,9 +44,6 @@
 	background-color: var(--blueva-text);
 	background-size: cover;
 	background-position: center;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
 	color: #fff;
 	overflow: hidden;
 }
@@ -58,11 +55,24 @@
 	pointer-events: none;
 }
 
-.blueva-hero-top,
-.blueva-hero-kicker-big,
-.blueva-hero-bottom {
+/* Single flex column driving the whole text overlay: top block (wordmark
+   + kicker) and bottom block (heading/copy/CTA) are its only two
+   children, so justify-content: space-between cleanly pins one to the
+   top and one to the bottom without needing margin-top:auto hacks. */
+.blueva-hero-content {
 	position: relative;
 	z-index: 1;
+	min-height: clamp(560px, 100vh, 900px);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.blueva-hero-top-block {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
 }
 
 .blueva-hero-top {
@@ -103,7 +113,6 @@
 	align-items: flex-end;
 	justify-content: space-between;
 	gap: var(--blueva-spacing-md);
-	margin-top: auto;
 	padding-bottom: clamp(32px, 6vw, 72px);
 }
 
@@ -379,6 +388,14 @@
 	color: #fff;
 }
 
+.blueva-category-card--placeholder-a {
+	background-image: var(--blueva-placeholder-gradient);
+}
+
+.blueva-category-card--placeholder-b {
+	background-image: var(--blueva-placeholder-gradient-alt);
+}
+
 .blueva-category-overlay {
 	position: absolute;
 	inset: 0;
@@ -430,12 +447,10 @@
 
 .blueva-video-wrap {
 	position: relative;
-	max-width: 900px;
-	margin-inline: auto;
-	border-radius: var(--blueva-radius-lg);
+	width: 100%;
 	overflow: hidden;
 	background: var(--blueva-text);
-	aspect-ratio: 4 / 5;
+	aspect-ratio: 16 / 9;
 }
 
 .blueva-video,
@@ -456,21 +471,32 @@
 }
 
 .blueva-video-control {
-	width: 34px;
-	height: 34px;
-	border-radius: 50%;
 	border: none;
-	background: rgba(0, 0, 0, 0.35);
+	background: transparent;
 	color: #fff;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
+	box-shadow: none;
+	outline: none;
+}
+
+.blueva-video-control:hover,
+.blueva-video-control:active {
+	background: none;
 }
 
 .blueva-video-control svg {
-	display: block;
 	flex-shrink: 0;
+}
+
+.blueva-icon-hidden {
+	display: none !important;
+}
+
+.blueva-video-control svg:not([hidden]) {
+	display: block;
 }
 
 .blueva-video-big-play {
@@ -492,8 +518,13 @@
 	transition: background var(--blueva-transition-fast), opacity var(--blueva-transition-fast);
 }
 
-.blueva-video-big-play svg {
-	display: block;
+.blueva-video-big-play-icon {
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-left: 16px solid currentColor;
+	margin-left: 4px;
 }
 
 .blueva-video-big-play.is-hidden {
@@ -537,15 +568,9 @@
 }
 
 .blueva-statement-logo-wrap .custom-logo,
-.blueva-statement-logo-wrap .footer-custom-logo,
 .blueva-statement-logo-img {
 	max-height: 56px;
 	width: auto;
-}
-
-.blueva-statement-logo-wrap .custom-logo,
-.blueva-statement-logo-wrap .footer-custom-logo {
-	filter: brightness(0) invert(1);
 }
 
 .blueva-statement-logo {
@@ -605,6 +630,10 @@
 	.blueva-carousel-arrow {
 		width: 36px;
 		height: 36px;
+	}
+
+	.blueva-video-wrap {
+		aspect-ratio: 9 / 16;
 	}
 }
 

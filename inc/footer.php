@@ -32,13 +32,26 @@ add_action( 'astra_body_bottom', 'blueva_render_footer' );
  *
  * @return bool True if a custom logo was output, false if none is set.
  */
+/**
+ * Renders the Site Identity logo forced to a white silhouette via an
+ * inline style (not a CSS class) so the effect always applies regardless
+ * of stylesheet load order or caching — used on the teal footer and
+ * brand-statement band, never on the header where the logo keeps its
+ * original brand colors on a white background.
+ *
+ * @return bool True if a custom logo was output, false if none is set.
+ */
 function blueva_the_footer_logo() {
 	if ( ! has_custom_logo() ) {
 		return false;
 	}
 
 	$html = get_custom_logo();
-	$html = str_replace( 'class="custom-logo"', 'class="custom-logo footer-custom-logo"', $html );
+	$html = str_replace(
+		'class="custom-logo"',
+		'class="custom-logo" style="filter: brightness(0) invert(1);"',
+		$html
+	);
 
 	// get_custom_logo() output is already escaped by WordPress core.
 	echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

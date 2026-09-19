@@ -23,7 +23,7 @@ $blueva_footer_logo_url = get_theme_mod( 'blueva_footer_logo', '' );
 		<div class="blueva-footer-col blueva-footer-brand">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="blueva-footer-logo" rel="home">
 				<?php if ( $blueva_footer_logo_url ) : ?>
-					<img src="<?php echo esc_url( $blueva_footer_logo_url ); ?>" class="blueva-footer-logo-img" alt="<?php bloginfo( 'name' ); ?>" />
+					<img src="<?php echo esc_url( $blueva_footer_logo_url ); ?>" class="blueva-footer-logo-img" style="filter: brightness(0) invert(1);" alt="<?php bloginfo( 'name' ); ?>" />
 				<?php elseif ( has_custom_logo() ) : ?>
 					<?php blueva_the_footer_logo(); ?>
 				<?php else : ?>
@@ -95,7 +95,7 @@ $blueva_footer_logo_url = get_theme_mod( 'blueva_footer_logo', '' );
 			<?php
 			printf(
 				/* translators: 1: current year */
-				esc_html__( '© %1$s . MH-STUDIO Tous droits réservés.', 'blueva' ),
+				esc_html__( '© %1$s . MARKCOM Tous droits réservés.', 'blueva' ),
 				esc_html( gmdate( 'Y' ) )
 			);
 			?>
