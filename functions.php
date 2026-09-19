@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'BLUEVA_VERSION', '1.1.0' );
+define( 'BLUEVA_VERSION', '1.1.2' );
 define( 'BLUEVA_DIR', get_stylesheet_directory() );
 define( 'BLUEVA_URI', get_stylesheet_directory_uri() );
 
@@ -22,6 +22,7 @@ define( 'BLUEVA_URI', get_stylesheet_directory_uri() );
  * directly into this file.
  */
 require_once BLUEVA_DIR . '/inc/setup.php';
+require_once BLUEVA_DIR . '/inc/layout.php';
 require_once BLUEVA_DIR . '/inc/enqueue.php';
 require_once BLUEVA_DIR . '/inc/customizer.php';
 require_once BLUEVA_DIR . '/inc/header.php';

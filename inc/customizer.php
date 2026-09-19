@@ -79,7 +79,7 @@ function blueva_customize_register( $wp_customize ) {
 		'blueva_footer_logo',
 		array(
 			'default'           => '',
-			'sanitize_callback' => 'absint',
+			'sanitize_callback' => 'esc_url_raw',
 		)
 	);
 
@@ -110,7 +110,7 @@ function blueva_customize_register( $wp_customize ) {
 		'blueva_hero_image',
 		array(
 			'default'           => '',
-			'sanitize_callback' => 'absint',
+			'sanitize_callback' => 'esc_url_raw',
 		)
 	);
 	$wp_customize->add_control(
@@ -148,7 +148,7 @@ function blueva_customize_register( $wp_customize ) {
 		'blueva_video_section_poster',
 		array(
 			'default'           => '',
-			'sanitize_callback' => 'absint',
+			'sanitize_callback' => 'esc_url_raw',
 		)
 	);
 	$wp_customize->add_control(

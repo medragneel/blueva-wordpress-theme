@@ -244,7 +244,10 @@
 }
 
 .blueva-carousel-cta a,
-.blueva-carousel-cta .button {
+.blueva-carousel-cta a.button,
+.blueva-carousel-cta .button,
+.woocommerce .blueva-carousel-cta a.button,
+.woocommerce .blueva-carousel-cta a.added_to_cart {
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
@@ -259,7 +262,9 @@
 }
 
 .blueva-carousel-cta a:hover,
-.blueva-carousel-cta .button:hover {
+.blueva-carousel-cta a.button:hover,
+.blueva-carousel-cta .button:hover,
+.woocommerce .blueva-carousel-cta a.button:hover {
 	background: var(--blueva-text);
 	color: #fff;
 }
@@ -271,12 +276,17 @@
 	border-radius: 50%;
 	border: 1px solid var(--blueva-border);
 	background: var(--blueva-surface);
-	color: var(--blueva-text);
+	color: var(--blueva-text, #16232a);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
 	transition: background var(--blueva-transition-fast), color var(--blueva-transition-fast);
+}
+
+.blueva-carousel-arrow svg {
+	display: block;
+	flex-shrink: 0;
 }
 
 .blueva-carousel-arrow:hover,
@@ -458,6 +468,11 @@
 	cursor: pointer;
 }
 
+.blueva-video-control svg {
+	display: block;
+	flex-shrink: 0;
+}
+
 .blueva-video-big-play {
 	position: absolute;
 	top: 50%;
@@ -475,6 +490,10 @@
 	cursor: pointer;
 	z-index: 2;
 	transition: background var(--blueva-transition-fast), opacity var(--blueva-transition-fast);
+}
+
+.blueva-video-big-play svg {
+	display: block;
 }
 
 .blueva-video-big-play.is-hidden {
@@ -495,17 +514,9 @@
 	background: var(--blueva-primary);
 	color: #fff;
 	overflow: hidden;
+	border-radius: 40% 0;
 	padding-block: clamp(56px, 10vw, 120px);
-}
-
-.blueva-statement-corner {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: clamp(120px, 20vw, 320px);
-	height: clamp(120px, 20vw, 320px);
-	background: var(--blueva-background);
-	border-bottom-left-radius: 100%;
+	margin-bottom: clamp(32px, 6vw, 72px);
 }
 
 .blueva-statement-inner {
@@ -516,6 +527,25 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 8px;
+}
+
+.blueva-statement-logo-wrap {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 6px;
+}
+
+.blueva-statement-logo-wrap .custom-logo,
+.blueva-statement-logo-wrap .footer-custom-logo,
+.blueva-statement-logo-img {
+	max-height: 56px;
+	width: auto;
+}
+
+.blueva-statement-logo-wrap .custom-logo,
+.blueva-statement-logo-wrap .footer-custom-logo {
+	filter: brightness(0) invert(1);
 }
 
 .blueva-statement-logo {
@@ -529,7 +559,6 @@
 	font-size: 0.65rem;
 	letter-spacing: 0.14em;
 	color: #fff;
-	opacity: 0.9;
 	margin-bottom: var(--blueva-spacing-md);
 }
 
@@ -539,8 +568,8 @@
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
 	font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-	margin: 0;
-	opacity: 0.9;
+	margin: var(--blueva-spacing-md) 0 0;
+	color: #fff;
 }
 
 .blueva-statement-heading {

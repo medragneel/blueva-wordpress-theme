@@ -9,16 +9,24 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+$blueva_statement_logo_url = get_theme_mod( 'blueva_footer_logo', '' );
 ?>
 <section class="blueva-statement">
-	<span class="blueva-statement-corner" aria-hidden="true"></span>
-
 	<div class="blueva-statement-inner blueva-container">
-		<span class="blueva-logo-word blueva-statement-logo">
-			BLUEVA<sup class="blueva-logo-reg">®</sup>
-		</span>
-		<span class="blueva-logo-tagline blueva-statement-tagline">
-			<?php esc_html_e( 'KEEP WALKING · KEEP SMILING', 'blueva' ); ?>
+		<span class="blueva-statement-logo-wrap">
+			<?php if ( $blueva_statement_logo_url ) : ?>
+				<img src="<?php echo esc_url( $blueva_statement_logo_url ); ?>" class="blueva-statement-logo-img" alt="<?php bloginfo( 'name' ); ?>" />
+			<?php elseif ( has_custom_logo() ) : ?>
+				<?php blueva_the_footer_logo(); ?>
+			<?php else : ?>
+				<span class="blueva-logo-word blueva-statement-logo">
+					BLUEVA<sup class="blueva-logo-reg">®</sup>
+				</span>
+				<span class="blueva-logo-tagline blueva-statement-tagline">
+					<?php esc_html_e( 'KEEP WALKING · KEEP SMILING', 'blueva' ); ?>
+				</span>
+			<?php endif; ?>
 		</span>
 
 		<p class="blueva-statement-kicker">
@@ -34,3 +42,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</a>
 	</div>
 </section>
+

@@ -15,22 +15,15 @@ $blueva_phone          = get_theme_mod( 'blueva_phone', '0784284722 / 044361306'
 $blueva_email          = get_theme_mod( 'blueva_email', 'info@blueva.dz' );
 $blueva_facebook       = get_theme_mod( 'blueva_facebook_url', '' );
 $blueva_instagram      = get_theme_mod( 'blueva_instagram_url', '' );
-$blueva_footer_logo_id = get_theme_mod( 'blueva_footer_logo', '' );
+$blueva_footer_logo_url = get_theme_mod( 'blueva_footer_logo', '' );
 ?>
 <footer id="blueva-footer" class="blueva-footer">
 	<div class="blueva-container blueva-footer-inner">
 
 		<div class="blueva-footer-col blueva-footer-brand">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="blueva-footer-logo" rel="home">
-				<?php if ( $blueva_footer_logo_id ) : ?>
-					<?php
-					echo wp_get_attachment_image(
-						$blueva_footer_logo_id,
-						'full',
-						false,
-						array( 'class' => 'blueva-footer-logo-img' )
-					);
-					?>
+				<?php if ( $blueva_footer_logo_url ) : ?>
+					<img src="<?php echo esc_url( $blueva_footer_logo_url ); ?>" class="blueva-footer-logo-img" alt="<?php bloginfo( 'name' ); ?>" />
 				<?php elseif ( has_custom_logo() ) : ?>
 					<?php blueva_the_footer_logo(); ?>
 				<?php else : ?>
@@ -102,7 +95,7 @@ $blueva_footer_logo_id = get_theme_mod( 'blueva_footer_logo', '' );
 			<?php
 			printf(
 				/* translators: 1: current year */
-				esc_html__( '© %1$s . MARKCOM Tous droits réservés.', 'blueva' ),
+				esc_html__( '© %1$s . MH-STUDIO Tous droits réservés.', 'blueva' ),
 				esc_html( gmdate( 'Y' ) )
 			);
 			?>

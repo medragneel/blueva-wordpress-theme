@@ -9,9 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$blueva_video_url    = get_theme_mod( 'blueva_video_section_file', '' );
-$blueva_poster_id    = get_theme_mod( 'blueva_video_section_poster', '' );
-$blueva_poster_url   = $blueva_poster_id ? wp_get_attachment_image_url( $blueva_poster_id, 'full' ) : '';
+$blueva_video_url  = get_theme_mod( 'blueva_video_section_file', '' );
+$blueva_poster_url = get_theme_mod( 'blueva_video_section_poster', '' );
 
 if ( ! $blueva_video_url && ! $blueva_poster_url ) {
 	return;

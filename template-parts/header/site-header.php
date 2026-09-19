@@ -39,6 +39,10 @@ $blueva_categories  = blueva_get_category_links();
 		</button>
 
 		<nav class="blueva-nav-left" aria-label="<?php esc_attr_e( 'Navigation principale', 'blueva' ); ?>">
+			<a class="blueva-nav-link blueva-nav-text" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+				<?php esc_html_e( 'Home', 'blueva' ); ?>
+			</a>
+
 			<a class="blueva-nav-link blueva-nav-text" href="<?php echo esc_url( $blueva_shop_url ); ?>">
 				<?php esc_html_e( 'Boutique', 'blueva' ); ?>
 			</a>
@@ -116,10 +120,9 @@ $blueva_categories  = blueva_get_category_links();
 			</button>
 
 			<a class="blueva-cart-link" href="<?php echo esc_url( $blueva_cart_url ); ?>" aria-label="<?php esc_attr_e( 'Panier', 'blueva' ); ?>">
-				<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-					<path d="M6 8h12l-1.1 11.2a2 2 0 0 1-2 1.8H9.1a2 2 0 0 1-2-1.8L6 8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-					<path d="M9 8V6a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-				</svg>
+<svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M11.0784 2.89423C8.57288 2.89423 6.54176 4.92534 6.54176 7.43086V7.50253H3.70513C2.72667 7.50253 1.93347 8.29572 1.93347 9.27418V16.6475C1.93347 19.662 4.37723 22.1058 7.39177 22.1058H16.6084C19.6229 22.1058 22.0667 19.662 22.0667 16.6475V9.27418C22.0667 8.29572 21.2735 7.50253 20.295 7.50253H17.4583V7.43086C17.4583 4.92535 15.4272 2.89423 12.9217 2.89423H11.0784ZM15.7583 9.20253V10.1958C15.7583 10.6653 16.1389 11.0458 16.6083 11.0458C17.0778 11.0458 17.4583 10.6653 17.4583 10.1958V9.20253H20.295C20.3346 9.20253 20.3667 9.23461 20.3667 9.27418V16.6475C20.3667 18.7231 18.684 20.4058 16.6084 20.4058H7.39177C5.31612 20.4058 3.63347 18.7231 3.63347 16.6475V9.27418C3.63347 9.23461 3.66555 9.20253 3.70513 9.20253H6.54176V10.1958C6.54176 10.6653 6.92231 11.0458 7.39176 11.0458C7.8612 11.0458 8.24176 10.6653 8.24176 10.1958V9.20253H15.7583ZM15.7583 7.50253V7.43086C15.7583 5.86423 14.4883 4.59423 12.9217 4.59423H11.0784C9.51176 4.59423 8.24176 5.86423 8.24176 7.43086V7.50253H15.7583Z" fill="#67a9b4"/>
+</svg>
 				<span class="blueva-cart-count" data-count="<?php echo esc_attr( $blueva_cart_count ); ?>"<?php echo 0 === $blueva_cart_count ? ' hidden' : ''; ?>>
 					<?php echo esc_html( $blueva_cart_count ); ?>
 				</span>
@@ -136,10 +139,7 @@ $blueva_categories  = blueva_get_category_links();
 				<input type="hidden" name="post_type" value="product" />
 			<?php endif; ?>
 			<button type="submit" aria-label="<?php esc_attr_e( 'Rechercher', 'blueva' ); ?>">
-				<svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-					<circle cx="8" cy="8" r="6.25" stroke="currentColor" stroke-width="1.6"/>
-					<path d="M17 17L12.7 12.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-				</svg>
+                <svg fill="#000000" width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21.71,20.29,18,16.61A9,9,0,1,0,16.61,18l3.68,3.68a1,1,0,0,0,1.42,0A1,1,0,0,0,21.71,20.29ZM11,18a7,7,0,1,1,7-7A7,7,0,0,1,11,18Z"/></svg>
 			</button>
 		</form>
 	</div>
