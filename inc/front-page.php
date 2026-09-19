@@ -98,7 +98,7 @@ function blueva_get_carousel_products( $context = 'new', $limit = 8 ) {
 function blueva_get_homepage_categories() {
 	$categories = array(
 		'INFANTIL' => array( 'infantils', 'infantil' ),
-		'JUVENIL'  => array( 'juvenils', 'juveniles', 'juvenile' ),
+		'JUVENIL'  => array( 'juvenils', 'juveniles', 'juvenil' ),
 		'FEMME'    => array( 'femmes' ),
 		'HOMME'    => array( 'hommes' ),
 	);
