@@ -1,0 +1,651 @@
+/* ==========================================================================
+   BLUEVA — PHASE 3: FRONT PAGE
+   Tested at 320 / 375 / 390 / 414 / 480 / 768 / 1024 / 1280 / 1440 / 1920.
+   ========================================================================== */
+
+.blueva-section-heading {
+	text-align: center;
+	margin: 0 0 var(--blueva-spacing-lg);
+	position: relative;
+}
+
+.blueva-section-heading--center::after {
+	content: '';
+	display: block;
+	width: 64px;
+	height: 4px;
+	background: var(--blueva-text);
+	margin: var(--blueva-spacing-sm) auto 0;
+	border-radius: var(--blueva-radius-pill);
+}
+
+.blueva-btn-outline-dark {
+	background: transparent;
+	border-color: var(--blueva-text);
+	color: var(--blueva-text);
+	border-radius: var(--blueva-radius-pill);
+	padding: 16px 36px;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+}
+
+.blueva-btn-outline-dark:hover,
+.blueva-btn-outline-dark:focus-visible {
+	background: var(--blueva-text);
+	color: #fff;
+}
+
+/* -------------------------------------------------------------------- */
+/* Hero                                                                   */
+/* -------------------------------------------------------------------- */
+.blueva-hero {
+	position: relative;
+	min-height: clamp(520px, 100vh, 900px);
+	min-height: clamp(520px, 100svh, 900px);
+	background-color: var(--blueva-text);
+	background-size: cover;
+	background-position: center;
+	color: #fff;
+	overflow: hidden;
+}
+
+.blueva-hero-overlay {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(10, 20, 24, 0.35) 0%, rgba(10, 20, 24, 0.15) 40%, rgba(10, 20, 24, 0.55) 100%);
+	pointer-events: none;
+}
+
+/* Single flex column driving the whole text overlay: top block (wordmark
+   + kicker) and bottom block (heading/copy/CTA) are its only two
+   children, so justify-content: space-between cleanly pins one to the
+   top and one to the bottom without needing margin-top:auto hacks. */
+.blueva-hero-content {
+	position: relative;
+	z-index: 1;
+	min-height: clamp(520px, 100vh, 900px);
+	min-height: clamp(520px, 100svh, 900px);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.blueva-hero-top-block {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+}
+
+.blueva-hero-top {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--blueva-spacing-md);
+	padding-top: clamp(32px, 6vw, 72px);
+}
+
+.blueva-hero-line {
+	width: clamp(40px, 8vw, 140px);
+	height: 1px;
+	background: rgba(255, 255, 255, 0.7);
+}
+
+.blueva-hero-wordmark {
+	font-family: 'Georgia', serif;
+	font-style: italic;
+	font-weight: 400;
+	font-size: clamp(1.4rem, 3vw, 2.4rem);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.blueva-hero-kicker-big {
+	text-align: center;
+	font-family: var(--blueva-font-display);
+	text-transform: uppercase;
+	font-size: clamp(2rem, 7vw, 5rem);
+	line-height: 1;
+	margin: 12px 0 0;
+	color: #fff;
+}
+
+.blueva-hero-bottom {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: var(--blueva-spacing-md);
+	padding-bottom: clamp(32px, 6vw, 72px);
+}
+
+.blueva-hero-copy {
+	max-width: 640px;
+}
+
+.blueva-hero-kicker {
+	font-size: 0.9rem;
+	letter-spacing: 0.02em;
+	opacity: 0.9;
+	margin: 0 0 8px;
+	color: #fff;
+}
+
+.blueva-hero-heading {
+	font-family: var(--blueva-font-display);
+	text-transform: uppercase;
+	font-size: clamp(1.8rem, 4vw, 3.2rem);
+	line-height: 1.05;
+	margin: 0 0 12px;
+	color: #fff;
+}
+
+.blueva-hero-text {
+	font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+	max-width: 46ch;
+	opacity: 0.92;
+	margin: 0;
+	color: #fff;
+}
+
+.blueva-hero-cta {
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+/* -------------------------------------------------------------------- */
+/* Product carousel                                                      */
+/* -------------------------------------------------------------------- */
+.blueva-carousel-section {
+	padding-block: clamp(48px, 8vw, 96px);
+}
+
+.blueva-carousel {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: var(--blueva-spacing-sm);
+}
+
+.blueva-carousel-viewport {
+	flex: 1 1 auto;
+	overflow: hidden;
+}
+
+.blueva-carousel-track {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	will-change: transform;
+	transition: transform 450ms ease;
+}
+
+.blueva-carousel-slide {
+	flex: 0 0 clamp(260px, 60vw, 420px);
+	padding-inline: var(--blueva-spacing-sm);
+	opacity: 0.35;
+	transform: scale(0.88);
+	transition: opacity 450ms ease, transform 450ms ease;
+}
+
+.blueva-carousel-slide.is-active {
+	opacity: 1;
+	transform: scale(1);
+}
+
+.blueva-carousel-slide-inner {
+	text-align: center;
+}
+
+.blueva-carousel-image {
+	display: block;
+	margin-bottom: var(--blueva-spacing-md);
+}
+
+.blueva-carousel-image img {
+	width: 100%;
+	height: auto;
+	display: block;
+	margin-inline: auto;
+}
+
+.blueva-carousel-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 12px;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 300ms ease;
+}
+
+.blueva-carousel-slide.is-active .blueva-carousel-info {
+	visibility: visible;
+	opacity: 1;
+}
+
+.blueva-carousel-info .blueva-product-title {
+	font-size: 1.4rem;
+	margin: 0;
+}
+
+.blueva-carousel-info .blueva-product-title a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.blueva-carousel-info .blueva-price {
+	font-size: 1.2rem;
+	color: var(--blueva-text);
+}
+
+.blueva-carousel-swatches {
+	display: flex;
+	gap: 8px;
+}
+
+.blueva-swatch {
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	background: var(--blueva-border);
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	display: inline-block;
+}
+
+.blueva-carousel-cta {
+	margin-top: 8px;
+}
+
+.blueva-carousel-cta a,
+.blueva-carousel-cta a.button,
+.blueva-carousel-cta .button,
+.woocommerce .blueva-carousel-cta a.button,
+.woocommerce .blueva-carousel-cta a.added_to_cart {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	border: 2px solid var(--blueva-text);
+	color: var(--blueva-text);
+	background: transparent;
+	border-radius: var(--blueva-radius-pill);
+	padding: 14px 32px;
+	font-weight: 700;
+	text-decoration: none;
+	transition: background var(--blueva-transition-fast), color var(--blueva-transition-fast);
+}
+
+.blueva-carousel-cta a:hover,
+.blueva-carousel-cta a.button:hover,
+.blueva-carousel-cta .button:hover,
+.woocommerce .blueva-carousel-cta a.button:hover {
+	background: var(--blueva-text);
+	color: #fff;
+}
+
+.blueva-carousel-arrow {
+	flex: 0 0 auto;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	border: 1px solid var(--blueva-border);
+	background: var(--blueva-surface);
+	color: var(--blueva-text, #16232a);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: background var(--blueva-transition-fast), color var(--blueva-transition-fast);
+}
+
+.blueva-carousel-arrow svg {
+	display: block;
+	flex-shrink: 0;
+}
+
+.blueva-carousel-arrow:hover,
+.blueva-carousel-arrow:focus-visible {
+	background: var(--blueva-text);
+	color: #fff;
+}
+
+/* -------------------------------------------------------------------- */
+/* Marquee                                                                */
+/* -------------------------------------------------------------------- */
+.blueva-marquee {
+	background: var(--blueva-primary);
+	color: #fff;
+	overflow: hidden;
+	padding-block: 14px;
+}
+
+.blueva-marquee-track {
+	display: flex;
+	width: max-content;
+	animation: blueva-marquee-scroll 28s linear infinite;
+}
+
+.blueva-marquee-group {
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+.blueva-marquee-item {
+	font-family: var(--blueva-font-body);
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 0.18em;
+	font-size: 0.85rem;
+	white-space: nowrap;
+	padding-inline: 12px;
+}
+
+.blueva-marquee-dot {
+	opacity: 0.7;
+}
+
+@keyframes blueva-marquee-scroll {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.blueva-marquee-track {
+		animation: none;
+		overflow-x: auto;
+	}
+}
+
+/* -------------------------------------------------------------------- */
+/* Categories grid                                                       */
+/* -------------------------------------------------------------------- */
+.blueva-categories {
+	padding-block: clamp(48px, 8vw, 96px);
+}
+
+.blueva-categories-grid {
+	display: flex;
+	flex-wrap: wrap;
+	margin: calc(var(--blueva-spacing-md) / -2);
+}
+
+.blueva-category-card {
+	flex: 1 1 calc(50% - var(--blueva-spacing-md));
+	margin: calc(var(--blueva-spacing-md) / 2);
+}
+
+.blueva-category-card {
+	position: relative;
+	display: block;
+	min-width: 0;
+	aspect-ratio: 4 / 5;
+	border-radius: var(--blueva-radius-lg);
+	overflow: hidden;
+	background-color: var(--blueva-primary-tint);
+	background-size: cover;
+	background-position: center;
+	text-decoration: none;
+	color: #fff;
+}
+
+.blueva-category-card--placeholder-a {
+	background-image: var(--blueva-placeholder-gradient);
+}
+
+.blueva-category-card--placeholder-b {
+	background-image: var(--blueva-placeholder-gradient-alt);
+}
+
+.blueva-category-overlay {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(10, 20, 24, 0.15) 0%, rgba(10, 20, 24, 0.05) 45%, rgba(10, 20, 24, 0.4) 100%);
+}
+
+.blueva-category-title {
+	position: absolute;
+	top: var(--blueva-spacing-md);
+	left: var(--blueva-spacing-md);
+	font-family: var(--blueva-font-display);
+	text-transform: uppercase;
+	font-size: clamp(1.3rem, 2.5vw, 2rem);
+	z-index: 1;
+}
+
+.blueva-category-arrow {
+	position: absolute;
+	right: var(--blueva-spacing-md);
+	bottom: var(--blueva-spacing-md);
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	border: 1.5px solid #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1;
+	transition: background var(--blueva-transition-fast), color var(--blueva-transition-fast);
+}
+
+.blueva-category-card:hover .blueva-category-arrow,
+.blueva-category-card:focus-visible .blueva-category-arrow {
+	background: #fff;
+	color: var(--blueva-text);
+}
+
+.blueva-categories-cta {
+	text-align: center;
+	margin-top: var(--blueva-spacing-lg);
+}
+
+/* -------------------------------------------------------------------- */
+/* Video section                                                         */
+/* -------------------------------------------------------------------- */
+.blueva-video-section {
+	padding-block: clamp(48px, 8vw, 96px);
+}
+
+.blueva-video-wrap {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	background: var(--blueva-text);
+	aspect-ratio: 16 / 9;
+}
+
+.blueva-video,
+.blueva-video-fallback-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.blueva-video-controls {
+	position: absolute;
+	top: var(--blueva-spacing-sm);
+	left: var(--blueva-spacing-sm);
+	display: flex;
+	gap: 8px;
+	z-index: 2;
+}
+
+.blueva-video-control {
+	border: none;
+	background: transparent;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	box-shadow: none;
+	outline: none;
+}
+
+.blueva-video-control:hover,
+.blueva-video-control:active {
+	background: none;
+}
+
+.blueva-video-control svg {
+	flex-shrink: 0;
+}
+
+.blueva-icon-hidden {
+	display: none !important;
+}
+
+.blueva-video-control svg:not([hidden]) {
+	display: block;
+}
+
+.blueva-video-big-play {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	border: 1.5px solid #fff;
+	background: rgba(0, 0, 0, 0.25);
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	z-index: 2;
+	transition: background var(--blueva-transition-fast), opacity var(--blueva-transition-fast);
+}
+
+.blueva-video-big-play-icon {
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-left: 16px solid currentColor;
+	margin-left: 4px;
+}
+
+.blueva-video-big-play.is-hidden {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.blueva-video-big-play:hover,
+.blueva-video-big-play:focus-visible {
+	background: rgba(0, 0, 0, 0.4);
+}
+
+/* -------------------------------------------------------------------- */
+/* Brand statement / Collection CTA                                      */
+/* -------------------------------------------------------------------- */
+.blueva-statement {
+	position: relative;
+	background: var(--blueva-primary);
+	color: #fff;
+	overflow: hidden;
+	border-radius: 40% 0;
+	padding-block: clamp(56px, 10vw, 120px);
+	margin-bottom: clamp(32px, 6vw, 72px);
+}
+
+.blueva-statement-inner {
+	position: relative;
+	z-index: 1;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+}
+
+.blueva-statement-logo-wrap {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 6px;
+}
+
+.blueva-statement-logo-wrap .custom-logo,
+.blueva-statement-logo-img {
+	max-height: 56px;
+	width: auto;
+}
+
+.blueva-statement-logo {
+	font-family: var(--blueva-font-display);
+	font-size: clamp(2rem, 4vw, 2.8rem);
+	text-transform: uppercase;
+	color: #fff;
+}
+
+.blueva-statement-tagline {
+	font-size: 0.65rem;
+	letter-spacing: 0.14em;
+	color: #fff;
+	margin-bottom: var(--blueva-spacing-md);
+}
+
+.blueva-statement-kicker {
+	font-family: var(--blueva-font-body);
+	font-weight: 300;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+	margin: var(--blueva-spacing-md) 0 0;
+	color: #fff;
+}
+
+.blueva-statement-heading {
+	font-family: var(--blueva-font-display);
+	text-transform: uppercase;
+	font-size: clamp(1.8rem, 5vw, 3.4rem);
+	line-height: 1.1;
+	margin: 0 0 var(--blueva-spacing-md);
+	max-width: 20ch;
+	color: #fff;
+}
+
+/* -------------------------------------------------------------------- */
+/* Responsive adjustments                                                */
+/* -------------------------------------------------------------------- */
+@media (max-width: 767px) {
+	.blueva-hero-bottom {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.blueva-hero-cta {
+		align-self: flex-start;
+	}
+
+	.blueva-category-card {
+		flex: 1 1 100%;
+	}
+
+	.blueva-carousel-slide {
+		flex-basis: 78vw;
+	}
+
+	.blueva-carousel-arrow {
+		width: 36px;
+		height: 36px;
+	}
+
+	.blueva-video-wrap {
+		aspect-ratio: 9 / 16;
+	}
+}
+
+@media (max-width: 359px) {
+	.blueva-hero-kicker-big {
+		font-size: 2.1rem;
+	}
+}

@@ -53,5 +53,22 @@ function blueva_enqueue_assets() {
 		BLUEVA_VERSION,
 		true
 	);
+
+	// Footer component styles.
+	wp_enqueue_style(
+		'blueva-footer',
+		BLUEVA_URI . '/assets/css/footer.css',
+		array( 'blueva-style' ),
+		BLUEVA_VERSION
+	);
+
+	// Footer scroll-reveal (progressive enhancement, see assets/js/footer.js).
+	wp_enqueue_script(
+		'blueva-footer',
+		BLUEVA_URI . '/assets/js/footer.js',
+		array(),
+		BLUEVA_VERSION,
+		true
+	);
 }
 add_action( 'wp_enqueue_scripts', 'blueva_enqueue_assets' );

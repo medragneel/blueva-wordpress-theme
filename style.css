@@ -5,7 +5,7 @@
  * Author:       BLUEVA
  * Author URI:   https://www.blueva.dz
  * Template:     astra
- * Version:      1.0.0
+ * Version:      1.0.1
  * Text Domain:  blueva
  * WC requires at least: 3.0
  * WC tested up to: 11.1.0
@@ -22,6 +22,19 @@
 	--blueva-primary-dark: #0E5F6E;    /* hover / pressed states */
 	--blueva-primary-light: #4FB6C4;   /* gradient end, tints */
 	--blueva-primary-tint: #E3F1F3;    /* pale teal backgrounds */
+
+	/* Placeholder artwork (hero/category cards with no image uploaded
+	   yet) — always derived from the brand palette, never a flat gray,
+	   so an un-configured section still looks intentional. */
+	--blueva-placeholder-gradient: linear-gradient(135deg, var(--blueva-primary) 0%, var(--blueva-primary-dark) 100%);
+	--blueva-placeholder-gradient-alt: linear-gradient(135deg, var(--blueva-primary-light) 0%, var(--blueva-primary) 100%);
+
+	/* Interaction states — every hover/active/selection anywhere in the
+	   theme should reference these, not a one-off color. */
+	--blueva-hover: var(--blueva-primary-dark);
+	--blueva-active: var(--blueva-primary-dark);
+	--blueva-selection-bg: var(--blueva-primary);
+	--blueva-selection-text: #fff;
 
 	/* Neutrals */
 	--blueva-text: #16232A;
@@ -59,6 +72,12 @@
 	/* Motion */
 	--blueva-transition-fast: 150ms ease;
 	--blueva-transition: 250ms ease;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
 }
 
 /* Base typography hierarchy, defined once, reused everywhere */
@@ -140,8 +159,14 @@ h3.blueva-heading {
 
 .blueva-btn:hover,
 .blueva-btn:focus-visible {
-	background: var(--blueva-primary-dark);
-	border-color: var(--blueva-primary-dark);
+	background: var(--blueva-hover);
+	border-color: var(--blueva-hover);
+	color: #fff;
+}
+
+.blueva-btn:active {
+	background: var(--blueva-active);
+	border-color: var(--blueva-active);
 	color: #fff;
 }
 
@@ -154,6 +179,12 @@ h3.blueva-heading {
 .blueva-btn-ghost:hover,
 .blueva-btn-ghost:focus-visible {
 	background: rgba(255, 255, 255, 0.15);
+	color: inherit;
+	border-color: currentColor;
+}
+
+.blueva-btn-ghost:active {
+	background: rgba(255, 255, 255, 0.25);
 	color: inherit;
 	border-color: currentColor;
 }
@@ -173,6 +204,29 @@ h3.blueva-heading {
 :focus-visible {
 	outline: 3px solid var(--blueva-primary-light);
 	outline-offset: 2px;
+}
+
+/* Text selection, everywhere on the site, uses the brand color rather
+   than the browser default blue. */
+::selection {
+	background: var(--blueva-selection-bg);
+	color: var(--blueva-selection-text);
+}
+
+/* Generic link hover/active — component-specific rules (buttons, nav,
+   footer links, etc.) already set their own, this is the fallback for
+   plain content links so nothing on the site falls back to browser blue. */
+a {
+	color: var(--blueva-primary);
+}
+
+a:hover,
+a:focus-visible {
+	color: var(--blueva-hover);
+}
+
+a:active {
+	color: var(--blueva-active);
 }
 
 @media (prefers-reduced-motion: reduce) {
