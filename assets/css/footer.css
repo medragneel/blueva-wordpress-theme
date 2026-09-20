@@ -67,10 +67,13 @@
 	width: auto;
 }
 
+<<<<<<< HEAD
 .custom-logo {
 	filter: brightness(0) invert(1);
 }
 
+=======
+>>>>>>> front-page
 .blueva-logo-word--footer {
 	font-family: var(--blueva-font-display);
 	font-size: 2rem;

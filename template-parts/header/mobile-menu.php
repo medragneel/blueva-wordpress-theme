@@ -39,6 +39,7 @@ $blueva_categories  = blueva_get_category_links();
 	</div>
 
 	<nav class="blueva-mobile-nav" aria-label="<?php esc_attr_e( 'Navigation mobile', 'blueva' ); ?>">
+		<a class="blueva-mobile-link" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'blueva' ); ?></a>
 		<a class="blueva-mobile-link" href="<?php echo esc_url( $blueva_shop_url ); ?>"><?php esc_html_e( 'Boutique', 'blueva' ); ?></a>
 
 		<div class="blueva-mobile-accordion">

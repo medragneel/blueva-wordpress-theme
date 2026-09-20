@@ -15,13 +15,18 @@ $blueva_phone          = get_theme_mod( 'blueva_phone', '0784284722 / 044361306'
 $blueva_email          = get_theme_mod( 'blueva_email', 'info@blueva.dz' );
 $blueva_facebook       = get_theme_mod( 'blueva_facebook_url', '' );
 $blueva_instagram      = get_theme_mod( 'blueva_instagram_url', '' );
+<<<<<<< HEAD
 $blueva_footer_logo_id = get_theme_mod( 'blueva_footer_logo', '' );
+=======
+$blueva_footer_logo_url = get_theme_mod( 'blueva_footer_logo', '' );
+>>>>>>> front-page
 ?>
 <footer id="blueva-footer" class="blueva-footer">
 	<div class="blueva-container blueva-footer-inner">
 
 		<div class="blueva-footer-col blueva-footer-brand">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="blueva-footer-logo" rel="home">
+<<<<<<< HEAD
 				<?php if ( $blueva_footer_logo_id ) : ?>
 					<?php
 					echo wp_get_attachment_image(
@@ -33,6 +38,12 @@ $blueva_footer_logo_id = get_theme_mod( 'blueva_footer_logo', '' );
 					?>
 				<?php elseif ( has_custom_logo() ) : ?>
 					<?php the_custom_logo(); ?>
+=======
+				<?php if ( $blueva_footer_logo_url ) : ?>
+					<img src="<?php echo esc_url( $blueva_footer_logo_url ); ?>" class="blueva-footer-logo-img" style="filter: brightness(0) invert(1);" alt="<?php bloginfo( 'name' ); ?>" />
+				<?php elseif ( has_custom_logo() ) : ?>
+					<?php blueva_the_footer_logo(); ?>
+>>>>>>> front-page
 				<?php else : ?>
 					<span class="blueva-logo-word blueva-logo-word--footer">BLUEVA<sup class="blueva-logo-reg">®</sup></span>
 					<span class="blueva-logo-tagline blueva-logo-tagline--footer"><?php esc_html_e( 'KEEP WALKING · KEEP SMILING', 'blueva' ); ?></span>

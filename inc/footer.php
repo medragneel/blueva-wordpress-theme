@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> front-page
 <?php
 /**
  * PHASE 2 — Footer.
@@ -26,6 +29,44 @@ function blueva_render_footer() {
 add_action( 'astra_body_bottom', 'blueva_render_footer' );
 
 /**
+<<<<<<< HEAD
+=======
+ * Renders the Site Identity logo tagged with an extra `footer-custom-logo`
+ * class, so footer.css can force it to a white silhouette (see
+ * .footer-custom-logo in footer.css) without touching core's `.custom-logo`
+ * class anywhere else it's used (header, admin bar, etc).
+ *
+ * @return bool True if a custom logo was output, false if none is set.
+ */
+/**
+ * Renders the Site Identity logo forced to a white silhouette via an
+ * inline style (not a CSS class) so the effect always applies regardless
+ * of stylesheet load order or caching — used on the teal footer and
+ * brand-statement band, never on the header where the logo keeps its
+ * original brand colors on a white background.
+ *
+ * @return bool True if a custom logo was output, false if none is set.
+ */
+function blueva_the_footer_logo() {
+	if ( ! has_custom_logo() ) {
+		return false;
+	}
+
+	$html = get_custom_logo();
+	$html = str_replace(
+		'class="custom-logo"',
+		'class="custom-logo" style="filter: brightness(0) invert(1);"',
+		$html
+	);
+
+	// get_custom_logo() output is already escaped by WordPress core.
+	echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+
+	return true;
+}
+
+/**
+>>>>>>> front-page
  * Resolve a page's URL by slug, with a safe fallback when the page
  * doesn't exist yet (e.g. the site owner hasn't created it, or it's a
  * later phase that hasn't shipped). Never fatals, never links to "#"
@@ -84,7 +125,11 @@ function blueva_get_footer_categories() {
 		'HOMMES'    => array( 'hommes' ),
 		'FEMMES'    => array( 'femmes' ),
 		'INFANTILS' => array( 'infantils', 'infantil' ),
+<<<<<<< HEAD
 		'JUVENILS'  => array( 'juvenils', 'juveniles', 'juvenile' ),
+=======
+		'JUVENILS'  => array( 'juvenil', 'juvenils', 'juveniles', 'juvenile' ),
+>>>>>>> front-page
 	);
 
 	$links = array();
