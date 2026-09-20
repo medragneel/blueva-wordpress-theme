@@ -183,6 +183,7 @@
 .blueva-logo {
 	justify-self: center;
 	text-align: center;
+	min-width: 0;
 }
 
 .blueva-logo a {
@@ -241,6 +242,7 @@
 	justify-content: flex-end;
 	gap: var(--blueva-spacing-sm);
 	justify-self: end;
+	min-width: 0;
 }
 
 .blueva-search-form {
@@ -261,6 +263,7 @@
 	width: 100%;
 	font-size: 0.9rem;
 	color: var(--blueva-text);
+    box-shadow:none;
 }
 
 .blueva-search-form button {
@@ -322,12 +325,49 @@
 }
 
 .blueva-mobile-search-panel {
-	border-top: 1px solid var(--blueva-border);
+	background: var(--blueva-surface);
+	box-shadow: 0 12px 24px rgba(22, 35, 42, 0.1);
+	max-height: 0;
+	overflow: hidden;
+	opacity: 0;
+	transition: max-height var(--blueva-transition), opacity var(--blueva-transition-fast), padding var(--blueva-transition);
+}
+
+.blueva-mobile-search-panel.is-open {
+	max-height: 88px;
+	opacity: 1;
 	padding: 12px var(--blueva-spacing-sm);
 }
 
 .blueva-mobile-search-panel .blueva-search-form {
+	display: flex;
 	width: 100%;
+	height: 44px;
+	box-sizing: border-box;
+}
+
+.blueva-mobile-search-panel .blueva-search-form input[type="search"] {
+	font-size: 1rem;
+}
+
+.blueva-mobile-search-close {
+	background: transparent;
+	border: none;
+	color: var(--blueva-text-muted);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	cursor: pointer;
+	flex-shrink: 0;
+}
+
+.blueva-mobile-search-close:hover,
+.blueva-mobile-search-close:focus-visible {
+	color: var(--blueva-primary);
+	background: var(--blueva-primary-tint);
 }
 
 /* -------------------------------------------------------------------- */

@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'BLUEVA_VERSION', '1.2.0' );
+define( 'BLUEVA_VERSION', '1.3.2' );
 define( 'BLUEVA_DIR', get_stylesheet_directory() );
 define( 'BLUEVA_URI', get_stylesheet_directory_uri() );
 

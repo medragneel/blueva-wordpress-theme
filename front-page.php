@@ -30,7 +30,7 @@ get_header();
 		'template-parts/front-page/product-carousel',
 		null,
 		array(
-			'title'   => __( 'Best Sellers', 'blueva' ),
+			'title'   => __( 'Nouvelle Collection', 'blueva' ),
 			'context' => 'featured',
 		)
 	);

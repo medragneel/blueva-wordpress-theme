@@ -114,22 +114,25 @@ function blueva_get_category_links() {
 	}
 
 	$fallback_slugs = array(
-		'hommes'    => __( 'Hommes', 'blueva' ),
-		'femmes'    => __( 'Femmes', 'blueva' ),
-		'infantils' => __( 'Infantils', 'blueva' ),
-		'juveniles' => __( 'Juveniles', 'blueva' ),
+		'HOMMES'    => array( 'hommes' ),
+		'FEMMES'    => array( 'femmes' ),
+		'INFANTILS' => array( 'infantil', 'infantils' ),
+		'JUVENILES' => array( 'juvenil', 'juvenils', 'juveniles', 'juvenile' ),
 	);
 
 	$links = array();
 
 	if ( taxonomy_exists( 'product_cat' ) ) {
-		foreach ( $fallback_slugs as $slug => $label ) {
-			$term = get_term_by( 'slug', $slug, 'product_cat' );
-			if ( $term && ! is_wp_error( $term ) ) {
-				$links[] = array(
-					'label' => $label,
-					'url'   => get_term_link( $term ),
-				);
+		foreach ( $fallback_slugs as $label => $slugs ) {
+			foreach ( $slugs as $slug ) {
+				$term = get_term_by( 'slug', $slug, 'product_cat' );
+				if ( $term && ! is_wp_error( $term ) ) {
+					$links[] = array(
+						'label' => $label,
+						'url'   => get_term_link( $term ),
+					);
+					break;
+				}
 			}
 		}
 	}
@@ -139,10 +142,10 @@ function blueva_get_category_links() {
 	}
 
 	// Last-resort static fallback (e.g. WooCommerce not yet installed).
-	foreach ( $fallback_slugs as $slug => $label ) {
+	foreach ( $fallback_slugs as $label => $slugs ) {
 		$links[] = array(
 			'label' => $label,
-			'url'   => home_url( '/product-category/' . $slug . '/' ),
+			'url'   => home_url( '/product-category/' . $slugs[0] . '/' ),
 		);
 	}
 

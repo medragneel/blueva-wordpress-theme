@@ -132,20 +132,51 @@
 	function initMobileSearchToggle() {
 		var toggle = document.querySelector( '[data-blueva-open-search]' );
 		var panel = document.querySelector( '[data-blueva-search-panel]' );
+		var closeBtn = document.querySelector( '[data-blueva-close-search]' );
 
 		if ( ! toggle || ! panel ) {
 			return;
 		}
 
-		toggle.addEventListener( 'click', function () {
-			var isHidden = panel.hidden;
-			panel.hidden = ! isHidden;
-			toggle.setAttribute( 'aria-expanded', isHidden ? 'true' : 'false' );
-			if ( isHidden ) {
-				var input = panel.querySelector( 'input[type="search"]' );
-				if ( input ) {
+		function open() {
+			panel.classList.add( 'is-open' );
+			toggle.setAttribute( 'aria-expanded', 'true' );
+			var input = panel.querySelector( 'input[type="search"]' );
+			if ( input ) {
+				// Wait for the open transition so mobile keyboards don't
+				// fight the panel's slide-down animation.
+				setTimeout( function () {
 					input.focus();
-				}
+				}, 150 );
+			}
+		}
+
+		function close() {
+			panel.classList.remove( 'is-open' );
+			toggle.setAttribute( 'aria-expanded', 'false' );
+		}
+
+		toggle.addEventListener( 'click', function () {
+			if ( panel.classList.contains( 'is-open' ) ) {
+				close();
+			} else {
+				open();
+			}
+		} );
+
+		if ( closeBtn ) {
+			closeBtn.addEventListener( 'click', close );
+		}
+
+		document.addEventListener( 'keydown', function ( e ) {
+			if ( 'Escape' === e.key && panel.classList.contains( 'is-open' ) ) {
+				close();
+			}
+		} );
+
+		document.addEventListener( 'click', function ( e ) {
+			if ( panel.classList.contains( 'is-open' ) && ! panel.contains( e.target ) && e.target !== toggle ) {
+				close();
 			}
 		} );
 	}

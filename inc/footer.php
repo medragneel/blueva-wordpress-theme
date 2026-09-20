@@ -118,7 +118,7 @@ function blueva_get_footer_categories() {
 		'HOMMES'    => array( 'hommes' ),
 		'FEMMES'    => array( 'femmes' ),
 		'INFANTILS' => array( 'infantils', 'infantil' ),
-		'JUVENILS'  => array( 'juvenils', 'juveniles', 'juvenile' ),
+		'JUVENILS'  => array( 'juvenil', 'juvenils', 'juveniles', 'juvenile' ),
 	);
 
 	$links = array();

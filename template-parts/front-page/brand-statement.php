@@ -16,7 +16,7 @@ $blueva_statement_logo_url = get_theme_mod( 'blueva_footer_logo', '' );
 	<div class="blueva-statement-inner blueva-container">
 		<span class="blueva-statement-logo-wrap">
 			<?php if ( $blueva_statement_logo_url ) : ?>
-				<img src="<?php echo esc_url( $blueva_statement_logo_url ); ?>" class="blueva-statement-logo-img" alt="<?php bloginfo( 'name' ); ?>" />
+				<img src="<?php echo esc_url( $blueva_statement_logo_url ); ?>" class="blueva-statement-logo-img" style="filter: brightness(0) invert(1);" alt="<?php bloginfo( 'name' ); ?>" />
 			<?php elseif ( has_custom_logo() ) : ?>
 				<?php blueva_the_footer_logo(); ?>
 			<?php else : ?>
