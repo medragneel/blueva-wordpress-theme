@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'BLUEVA_VERSION', '1.3.2' );
+define( 'BLUEVA_VERSION', '1.6.3' );
 define( 'BLUEVA_DIR', get_stylesheet_directory() );
 define( 'BLUEVA_URI', get_stylesheet_directory_uri() );
 
@@ -28,9 +28,10 @@ require_once BLUEVA_DIR . '/inc/customizer.php';
 require_once BLUEVA_DIR . '/inc/header.php';
 require_once BLUEVA_DIR . '/inc/footer.php';
 require_once BLUEVA_DIR . '/inc/front-page.php';
+require_once BLUEVA_DIR . '/inc/shop.php';
 
 /**
- * Phases not yet implemented (shop, cart, checkout, contact, b2b) will
- * each add their own inc/*.php include here, in order, once built — so
- * this file stays a stable manifest of what exists.
+ * Phases not yet implemented (cart, checkout, contact, b2b) will each
+ * add their own inc/*.php include here, in order, once built — so this
+ * file stays a stable manifest of what exists.
  */

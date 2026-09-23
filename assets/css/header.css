@@ -263,7 +263,6 @@
 	width: 100%;
 	font-size: 0.9rem;
 	color: var(--blueva-text);
-    box-shadow:none;
 }
 
 .blueva-search-form button {

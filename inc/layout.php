@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Pages/templates that should render full-width, edge-to-edge.
  */
 function blueva_uses_full_width_layout() {
-	return is_front_page();
+	return is_front_page() || is_shop() || is_product_category() || is_product_tag();
 }
 
 /**

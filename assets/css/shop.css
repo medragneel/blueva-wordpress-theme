@@ -1,0 +1,526 @@
+/* ==========================================================================
+   BLUEVA — PHASE 4: SHOP & CATEGORY ARCHIVES
+   Tested at 320 / 375 / 390 / 414 / 480 / 768 / 1024 / 1280 / 1440 / 1920.
+   ========================================================================== */
+
+/* -------------------------------------------------------------------- */
+/* Archive header — desaturated image/video band with the category name */
+/* -------------------------------------------------------------------- */
+.blueva-archive-header {
+	position: relative;
+	min-height: clamp(320px, 42vw, 480px);
+	min-height: clamp(320px, 42svh, 480px);
+	background-color: var(--blueva-text);
+	background-size: cover;
+	background-position: center;
+	filter: grayscale(0.55);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+}
+
+/* Text/controls need full color even though the background is
+   desaturated, so un-grayscale a dedicated layer above the photo. */
+.blueva-archive-header-content,
+.blueva-archive-header-controls {
+	filter: grayscale(0);
+}
+
+.blueva-archive-header-video {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.blueva-archive-header-overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(10, 20, 24, 0.4);
+}
+
+.blueva-archive-header-content {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	gap: var(--blueva-spacing-md);
+	padding-inline: var(--blueva-spacing-md);
+	max-width: 90%;
+}
+
+.blueva-archive-header-content .blueva-hero-line {
+	width: clamp(40px, 8vw, 140px);
+	height: 1px;
+	background: rgba(255, 255, 255, 0.8);
+	flex-shrink: 0;
+}
+
+.blueva-archive-header-title {
+	font-family: var(--blueva-font-display);
+	text-transform: uppercase;
+	color: #fff;
+	font-size: clamp(1.8rem, 5vw, 3.4rem);
+	text-align: center;
+	margin: 0;
+	white-space: nowrap;
+}
+
+.blueva-archive-header-controls {
+	position: absolute;
+	left: var(--blueva-spacing-sm);
+	bottom: var(--blueva-spacing-sm);
+	z-index: 1;
+	display: flex;
+	gap: 8px;
+}
+
+/* -------------------------------------------------------------------- */
+/* Filter bar                                                            */
+/* -------------------------------------------------------------------- */
+.blueva-shop-body {
+	padding-block: clamp(32px, 6vw, 64px);
+}
+
+.blueva-shop-description {
+	max-width: 70ch;
+	margin: 0 auto clamp(24px, 4vw, 40px);
+	text-align: center;
+	color: var(--blueva-text-muted);
+}
+
+.blueva-shop-filters-form {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: var(--blueva-spacing-md);
+	margin-bottom: clamp(32px, 5vw, 56px);
+}
+
+.blueva-filter-search {
+	display: flex;
+	align-items: center;
+	background: var(--blueva-background);
+	border: 1px solid var(--blueva-border);
+	border-radius: var(--blueva-radius-pill);
+	padding: 6px 8px 6px 20px;
+	gap: 8px;
+	flex: 1 1 240px;
+	max-width: 340px;
+	height: 48px;
+	box-sizing: border-box;
+}
+
+.blueva-filter-search input[type="search"] {
+	border: none;
+	background: transparent;
+	outline: none;
+	width: 100%;
+	font-size: 0.95rem;
+	color: var(--blueva-text);
+}
+
+.blueva-filter-search button {
+	background: transparent;
+	border: none;
+	color: var(--blueva-text-muted);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 34px;
+	height: 34px;
+	border-radius: 50%;
+	cursor: pointer;
+	flex-shrink: 0;
+}
+
+.blueva-filter-search button:hover {
+	color: var(--blueva-primary);
+	background: var(--blueva-primary-tint);
+}
+
+.blueva-filter-pills {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+.blueva-filter-dropdown {
+	position: relative;
+}
+
+.blueva-filter-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	list-style: none;
+	cursor: pointer;
+	border: 2px solid var(--blueva-text);
+	border-radius: var(--blueva-radius-pill);
+	padding: 12px 22px;
+	font-weight: 700;
+	font-size: 0.95rem;
+	color: var(--blueva-text);
+	background: var(--blueva-surface);
+	transition: background var(--blueva-transition-fast), color var(--blueva-transition-fast);
+	user-select: none;
+}
+
+.blueva-filter-pill::marker,
+.blueva-filter-pill::-webkit-details-marker {
+	display: none;
+	content: '';
+}
+
+.blueva-filter-pill:hover,
+.blueva-filter-pill.is-active {
+	background: var(--blueva-text);
+	color: #fff;
+}
+
+.blueva-filter-dropdown[open] .blueva-filter-pill .blueva-chevron {
+	transform: rotate(180deg);
+}
+
+.blueva-filter-pill .blueva-chevron {
+	transition: transform var(--blueva-transition-fast);
+}
+
+.blueva-filter-panel {
+	position: absolute;
+	top: calc(100% + 10px);
+	right: 0;
+	min-width: 240px;
+	background: var(--blueva-surface);
+	border: 1px solid var(--blueva-border);
+	border-radius: var(--blueva-radius-md);
+	box-shadow: 0 16px 40px rgba(22, 35, 42, 0.14);
+	padding: var(--blueva-spacing-sm);
+	z-index: 30;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.blueva-filter-option {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 10px 8px;
+	border-radius: var(--blueva-radius-sm);
+	cursor: pointer;
+	font-size: 0.92rem;
+	color: var(--blueva-text);
+}
+
+.blueva-filter-option:hover {
+	background: var(--blueva-primary-tint);
+}
+
+.blueva-filter-option input {
+	accent-color: var(--blueva-primary);
+	width: 16px;
+	height: 16px;
+	flex-shrink: 0;
+}
+
+.blueva-filter-option--color .blueva-swatch {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: var(--blueva-border);
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	flex-shrink: 0;
+}
+
+.blueva-filter-apply {
+	margin-top: 8px;
+	border: none;
+	background: var(--blueva-primary);
+	color: #fff;
+	font-weight: 700;
+	padding: 12px;
+	border-radius: var(--blueva-radius-md);
+	cursor: pointer;
+	transition: background var(--blueva-transition-fast);
+}
+
+.blueva-filter-apply:hover {
+	background: var(--blueva-hover);
+}
+
+/* -------------------------------------------------------------------- */
+/* Product grid — bold 2-column premium layout, matching the reference  */
+/* -------------------------------------------------------------------- */
+.blueva-product-grid {
+	list-style: none;
+	margin: calc(-1 * var(--blueva-spacing-md) / 2);
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.blueva-product-card {
+	flex: 1 1 calc(50% - var(--blueva-spacing-md));
+	margin: calc(var(--blueva-spacing-md) / 2);
+	min-width: 0;
+	list-style: none;
+}
+
+.blueva-product-card-inner {
+	background: var(--blueva-surface);
+	border: 1px solid var(--blueva-border);
+	border-radius: var(--blueva-radius-lg);
+	overflow: visible;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	transition: box-shadow var(--blueva-transition-fast), transform var(--blueva-transition-fast);
+}
+
+.blueva-product-card-inner:hover {
+	box-shadow: 0 20px 40px rgba(22, 35, 42, 0.1);
+	transform: translateY(-4px);
+}
+
+.blueva-product-card-image {
+	position: relative;
+	display: block;
+	background: var(--blueva-primary-tint);
+	aspect-ratio: 5 / 4;
+}
+
+.blueva-product-card-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	border-radius: var(--blueva-radius-lg) var(--blueva-radius-lg) 0 0;
+}
+
+.blueva-product-sale-badge {
+	position: absolute;
+	top: 16px;
+	left: 16px;
+	background: var(--blueva-error);
+	color: #fff;
+	font-size: 0.72rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	padding: 5px 12px;
+	border-radius: var(--blueva-radius-pill);
+	z-index: 1;
+}
+
+.blueva-product-arrow-badge {
+	position: absolute;
+	right: 24px;
+	bottom: -28px;
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 4px solid var(--blueva-surface);
+	z-index: 2;
+	transition: transform var(--blueva-transition-fast);
+}
+
+.blueva-product-card-inner:hover .blueva-product-arrow-badge {
+	transform: scale(1.08);
+}
+
+.blueva-product-card-body {
+	padding: 40px var(--blueva-spacing-md) var(--blueva-spacing-md);
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	flex: 1;
+}
+
+.blueva-product-sizes {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.blueva-size-circle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 40px;
+	height: 40px;
+	padding-inline: 6px;
+	border-radius: 50%;
+	border: 1.5px solid var(--blueva-text);
+	font-size: 0.72rem;
+	font-weight: 700;
+	color: var(--blueva-text);
+}
+
+.blueva-product-title-row {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: var(--blueva-spacing-sm);
+}
+
+.blueva-product-card-title {
+	font-size: 1.15rem;
+	font-weight: 700;
+	margin: 0;
+}
+
+.blueva-product-card-title a {
+	color: var(--blueva-text);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.blueva-product-card-title a:hover {
+	color: var(--blueva-hover);
+}
+
+.blueva-product-card-price {
+	font-family: var(--blueva-font-body);
+	font-weight: 700;
+	font-size: 1.1rem;
+	color: var(--blueva-text);
+	white-space: nowrap;
+}
+
+.blueva-product-card-cta {
+	margin-top: auto;
+}
+
+.blueva-product-card-cta a,
+.blueva-product-card-cta a.button,
+.woocommerce .blueva-product-card-cta a.button,
+.woocommerce .blueva-product-card-cta a.added_to_cart {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	width: 100%;
+	border: 2px solid var(--blueva-text);
+	color: var(--blueva-text);
+	background: transparent;
+	border-radius: var(--blueva-radius-md);
+	padding: 14px;
+	font-weight: 700;
+	text-decoration: none;
+	text-align: center;
+	box-sizing: border-box;
+	transition: background var(--blueva-transition-fast), color var(--blueva-transition-fast);
+}
+
+.blueva-product-card-cta a:hover,
+.woocommerce .blueva-product-card-cta a.button:hover {
+	background: var(--blueva-text);
+	color: #fff;
+}
+
+/* -------------------------------------------------------------------- */
+/* Empty state                                                           */
+/* -------------------------------------------------------------------- */
+.blueva-shop-empty {
+	text-align: center;
+	padding: clamp(48px, 8vw, 96px) var(--blueva-spacing-md);
+}
+
+.blueva-shop-empty p {
+	color: var(--blueva-text-muted);
+	margin-bottom: var(--blueva-spacing-md);
+}
+
+/* -------------------------------------------------------------------- */
+/* Pagination                                                            */
+/* -------------------------------------------------------------------- */
+.blueva-shop-pagination {
+	display: flex;
+	justify-content: center;
+	margin-top: clamp(40px, 6vw, 72px);
+}
+
+.blueva-shop-pagination .page-numbers {
+	list-style: none;
+	display: flex;
+	gap: 8px;
+	padding: 0;
+	margin: 0;
+}
+
+.blueva-shop-pagination .page-numbers li {
+	display: flex;
+}
+
+.blueva-shop-pagination .page-numbers a,
+.blueva-shop-pagination .page-numbers span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 40px;
+	height: 40px;
+	padding-inline: 4px;
+	border-radius: 50%;
+	border: 1.5px solid var(--blueva-border);
+	color: var(--blueva-text);
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 0.9rem;
+	transition: background var(--blueva-transition-fast), color var(--blueva-transition-fast), border-color var(--blueva-transition-fast);
+}
+
+.blueva-shop-pagination .page-numbers a:hover,
+.blueva-shop-pagination .page-numbers .current {
+	background: var(--blueva-text);
+	border-color: var(--blueva-text);
+	color: #fff;
+}
+
+/* -------------------------------------------------------------------- */
+/* Responsive                                                            */
+/* -------------------------------------------------------------------- */
+@media (max-width: 767px) {
+	.blueva-product-card {
+		flex: 1 1 100%;
+	}
+
+	.blueva-shop-filters-form {
+		flex-direction: column;
+	}
+
+	.blueva-filter-search {
+		max-width: none;
+		width: 100%;
+		flex: 0 0 auto;
+	}
+
+	.blueva-filter-pills {
+		width: 100%;
+	}
+
+	.blueva-filter-dropdown {
+		flex: 1 1 calc(50% - 6px);
+	}
+
+	.blueva-filter-pill {
+		width: 100%;
+		justify-content: space-between;
+	}
+
+	.blueva-filter-panel {
+		left: 0;
+		right: 0;
+		min-width: 0;
+	}
+
+	.blueva-archive-header-title {
+		white-space: normal;
+	}
+}

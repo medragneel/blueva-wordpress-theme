@@ -70,7 +70,7 @@ $blueva_slide_index = 0;
 									<?php if ( ! empty( $blueva_colors ) && ! is_wp_error( $blueva_colors ) ) : ?>
 										<div class="blueva-carousel-swatches">
 											<?php foreach ( $blueva_colors as $blueva_color ) : ?>
-												<?php $blueva_swatch = get_term_meta( $blueva_color->term_id, 'product_attribute_color', true ); ?>
+												<?php $blueva_swatch = blueva_resolve_color_swatch( $blueva_color ); ?>
 												<span
 													class="blueva-swatch"
 													title="<?php echo esc_attr( $blueva_color->name ); ?>"
